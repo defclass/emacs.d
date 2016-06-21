@@ -18,8 +18,9 @@
 
 (require 'init-epla)
 (require 'init-edit-utils)
+(require 'init-emacs-lisp)
 (require 'init-auto-complete)
 (require 'init-clojure)
+(require 'init-paredit)
 
-;;ido
-(ido-mode 1)
+
