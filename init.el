@@ -2,10 +2,6 @@
 
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
-(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
-(when (file-exists-p custom-file) 
-  (load custom-file))
-
 (add-to-list 'package-archives
   '("melpa-stable" . "http://melpa-stable.milkbox.net/packages/"))
 
@@ -17,7 +13,7 @@
 
 ;; Initialize all the ELPA packages (what is installed using the packages commands)
 (package-initialize)
-
+(require 'init-env)
 (require 'init-epla)
 (require 'init-edit-utils)
 (require 'init-emacs-lisp)
