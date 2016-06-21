@@ -1,8 +1,10 @@
 (require 'package)
 
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
+
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
-(load custom-file)
+(when (file-exists-p custom-file) 
+  (load custom-file))
 
 (add-to-list 'package-archives
   '("melpa-stable" . "http://melpa-stable.milkbox.net/packages/"))
