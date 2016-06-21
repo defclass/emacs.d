@@ -2,7 +2,7 @@
 (when (file-exists-p custom-file) 
   (load custom-file))
 
-(setenv "PATH" (concat (getenv "PATH") (expand-file-name ":~/bin")))
-(setq exec-path (append exec-path (expand-file-name ":~/bin")))
+(setenv "PATH" (concat (getenv "PATH") (concat ":" (substitute-in-file-name "$HOME/bin"))))
+(setq exec-path (append exec-path (list (substitute-in-file-name "$HOME/bin"))))
 
 (provide 'init-env)
