@@ -1,4 +1,5 @@
 (setq mac-command-modifier 'meta)
+(global-linum-mode t)
 
 (global-set-key (kbd "C-c j") 'join-line)
 

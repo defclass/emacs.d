@@ -9,13 +9,18 @@
   '("melpa" . "http://melpa.milkbox.net/packages/"))
 
 (add-to-list 'package-archives
-  '("marmalade" . "http://marmalade-repo.org/packages/"))
+	     '("marmalade" . "http://marmalade-repo.org/packages/"))
+
+(add-to-list 'package-archives
+             '("melpa-stable" . "https://stable.melpa.org/packages/"))
+
 
 ;; Initialize all the ELPA packages (what is installed using the packages commands)
 (package-initialize)
 (require 'init-env)
 (require 'init-epla)
 (require 'init-edit-utils)
+(require 'init-markdown)
 (require 'init-emacs-lisp)
 (require 'init-auto-complete)
 (require 'init-clojure)
