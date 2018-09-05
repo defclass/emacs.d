@@ -1,4 +1,5 @@
 ;; Cider &  nREPL
+(package-install 'clj-refactor)
 (add-hook 'clojure-mode-hook 'turn-on-eldoc-mode)
 (add-hook 'cider-repl-mode-hook 'turn-on-eldoc-mode)
 
