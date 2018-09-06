@@ -18,3 +18,7 @@
   (interactive)
   (let ((daily-name (format-time-string "%Y-%m-%d")))
     (find-file (format "%s.md" daily-name))))
+
+(defun note ()
+  (interactive)
+  (find-file  "~/note"))
