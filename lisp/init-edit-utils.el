@@ -1,9 +1,10 @@
 (setq mac-command-modifier 'meta)
 (global-linum-mode t)
+(setq column-number-mode t)
 
 (global-set-key (kbd "C-c j") 'join-line)
 
-;;backup
+;; backup
 (setq backup-by-copying t      
       backup-directory-alist 
       '(("." . "~/.emacs.d/.saves"))    
@@ -23,10 +24,25 @@
 (require-package 'avy)
 (global-set-key (kbd "C-;") 'avy-goto-char)
 
-;;smex
+;; smex
 (require-package 'smex)
 (smex-initialize)
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
+
+;; 80 column, default on
+(setq-default auto-fill-function 'do-auto-fill)
+(setq-default fill-column 80)
+
+
+;;  by drawing a thin line
+(require-package 'fill-column-indicator)
+
+(define-globalized-minor-mode global-fci-mode
+  fci-mode (lambda () (fci-mode 1)))
+
+(global-fci-mode 1)
+(setq fci-rule-column 81) ;; should be 80, have some bug? 
+(setq fci-style 'shading)
 
 (provide 'init-edit-utils)

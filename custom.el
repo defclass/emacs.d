@@ -6,7 +6,7 @@
  '(custom-enabled-themes (quote (tango-dark)))
  '(package-selected-packages
    (quote
-    (paredit markdown-mode use-package markdown-preview-mode flymd mkdown clj-refactor auto-complete smex avy))))
+    (column-marker fill-column-indicator paredit markdown-mode use-package markdown-preview-mode flymd mkdown clj-refactor auto-complete smex avy))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
