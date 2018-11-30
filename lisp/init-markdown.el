@@ -8,4 +8,11 @@
 
 (setq markdown-command "/usr/local/bin/pandoc")
 
+(add-hook 'markdown-mode-hook
+	  (lambda ()
+	    (add-to-list
+	     'markdown-code-lang-modes '("puml" . plantuml-mode))))
+
 (provide 'init-markdown)
+
+
