@@ -6,7 +6,7 @@
 (add-hook 'plantuml-mode-hook
 	  (lambda ()
 	    (progn
-	      (setq plantuml-output-type "utxt")
+	      (setq plantuml-output-type "usvg")
 	      (define-key plantuml-mode-map (kbd "C-c p")
 		'plantuml-preview-current-block))))
 
