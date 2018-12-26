@@ -51,6 +51,10 @@
 (setq sr-speedbar-right-side nil)
 (setq speedbar-show-unknown-files t)
 (setq sr-speedbar-max-width 40)
-(global-set-key (kbd "C-c b") 'sr-speedbar-toggle)
+(global-set-key (kbd "C-c s t") 'sr-speedbar-toggle)
+
+
+(require-package 'git-link)
+(global-set-key (kbd "C-c g l") 'git-link)
 
 (provide 'init-edit-utils)
