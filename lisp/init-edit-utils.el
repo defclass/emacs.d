@@ -45,4 +45,12 @@
 (setq fci-rule-column 81) ;; should be 80, have some bug? 
 (setq fci-style 'shading)
 
+(require-package 'sr-speedbar)
+(setq speedbar-use-images nil)
+(setq dframe-update-speed t)
+(setq sr-speedbar-right-side nil)
+(setq speedbar-show-unknown-files t)
+(setq sr-speedbar-max-width 40)
+(global-set-key (kbd "C-c b") 'sr-speedbar-toggle)
+
 (provide 'init-edit-utils)
