@@ -31,8 +31,9 @@
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 
 ;; 80 column, default on
-(setq-default auto-fill-function 'do-auto-fill)
-(setq-default fill-column 80)
+(toggle-truncate-lines 1)
+;; (setq-default auto-fill-function 'do-auto-fill)
+;; (setq-default fill-column 80)
 
 
 ;;  by drawing a thin line
@@ -51,7 +52,7 @@
 (setq sr-speedbar-right-side nil)
 (setq speedbar-show-unknown-files t)
 (setq sr-speedbar-max-width 40)
-(global-set-key (kbd "C-c s t") 'sr-speedbar-toggle)
+(global-set-key (kbd "C-c l") 'sr-speedbar-toggle)
 
 
 (require-package 'git-link)

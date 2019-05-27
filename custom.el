@@ -6,7 +6,7 @@
  '(custom-enabled-themes (quote (tango-dark)))
  '(package-selected-packages
    (quote
-    (magit plantuml-mode edit-indirect erlang column-marker fill-column-indicator paredit markdown-mode use-package markdown-preview-mode flymd mkdown clj-refactor auto-complete smex avy))))
+    (nginx-mode yaml-mode magit plantuml-mode edit-indirect erlang column-marker fill-column-indicator paredit use-package  clj-refactor auto-complete smex avy))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
