@@ -28,3 +28,4 @@
 (require 'init-paredit)
 (require 'init-go)
 (require 'init-nginx)
+(require 'init-ivy)
