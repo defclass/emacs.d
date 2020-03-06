@@ -4,9 +4,10 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes (quote (tango-dark)))
+ '(org-hide-leading-stars t)
  '(package-selected-packages
    (quote
-    (nginx-mode yaml-mode magit plantuml-mode edit-indirect erlang column-marker fill-column-indicator paredit use-package  clj-refactor auto-complete smex avy))))
+    (json-mode markdown-mode nginx-mode yaml-mode magit plantuml-mode edit-indirect erlang column-marker fill-column-indicator paredit use-package clj-refactor auto-complete smex avy))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -30,3 +31,7 @@
 (defun note ()
   (interactive)
   (find-file  "~/note"))
+
+(defun codebase ()
+  (interactive)
+  (find-file  "~/bearychat/codebase/"))

@@ -58,4 +58,12 @@
 (require-package 'git-link)
 (global-set-key (kbd "C-c g l") 'git-link)
 
+;; org-mode
+
+(setq org-todo-keywords
+      '((sequence "TODO(t)" "|" "DONE(d)")
+        (sequence "Question(q)" "|" "Solved(s)")))
+
+(setq org-tag-alist '(("@Proven" . ?p) ("@Wrong" . ?w)  ("@Guess" . ?g) ("@Fact" . ?f)))
+
 (provide 'init-edit-utils)
