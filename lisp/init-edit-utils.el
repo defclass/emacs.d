@@ -2,6 +2,8 @@
 (global-linum-mode t)
 (setq column-number-mode t)
 
+(tool-bar-mode -1)
+
 (global-set-key (kbd "C-c j") 'join-line)
 
 ;; backup
