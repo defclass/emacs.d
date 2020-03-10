@@ -39,14 +39,14 @@
 
 
 ;;  by drawing a thin line
-(require-package 'fill-column-indicator)
+;; (require-package 'fill-column-indicator)
 
-(define-globalized-minor-mode global-fci-mode
-  fci-mode (lambda () (fci-mode 1)))
+;; (define-globalized-minor-mode global-fci-mode
+;;   fci-mode (lambda () (fci-mode 1)))
 
-(global-fci-mode 1)
-(setq fci-rule-column 81) ;; should be 80, have some bug? 
-(setq fci-style 'shading)
+;; (global-fci-mode 1)
+;; (setq fci-rule-column 81) ;; should be 80, have some bug? 
+;; (setq fci-style 'shading)
 
 (require-package 'sr-speedbar)
 (setq speedbar-use-images nil)
@@ -60,12 +60,6 @@
 (require-package 'git-link)
 (global-set-key (kbd "C-c g l") 'git-link)
 
-;; org-mode
 
-(setq org-todo-keywords
-      '((sequence "TODO(t)" "|" "DONE(d)")
-        (sequence "Question(q)" "|" "Solved(s)")))
-
-(setq org-tag-alist '(("@Proven" . ?p) ("@Wrong" . ?w)  ("@Guess" . ?g) ("@Fact" . ?f)))
 
 (provide 'init-edit-utils)

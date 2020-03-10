@@ -34,3 +34,4 @@
 (require 'init-go)
 (require 'init-nginx)
 (require 'init-ivy)
+(require 'init-pyim)
