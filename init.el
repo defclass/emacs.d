@@ -26,7 +26,6 @@
 (require 'init-epla)
 (require 'init-edit-utils)
 (require 'init-plantuml)
-(require 'init-markdown)
 (require 'init-emacs-lisp)
 (require 'init-auto-complete)
 (require 'init-clojure)
