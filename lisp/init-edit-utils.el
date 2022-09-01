@@ -7,6 +7,9 @@
 (scroll-bar-mode -1)
 (menu-bar-mode -1)
 
+(setq make-backup-files nil)
+
+
 (global-set-key (kbd "C-c j") 'join-line)
 
 ;; backup
