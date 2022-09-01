@@ -5,9 +5,8 @@
 ;; (add-to-list 'package-archives
 ;; 	     '("melpa-stable" . "http://melpa-stable.milkbox.net/packages/"))
 
-(dolist (source '(("marmalade" . "http://elpa.emacs-china.org/marmalade/")
-                  ("melpa" . "http://elpa.emacs-china.org/melpa/")
-                  ("org" . "http://elpa.emacs-china.org/org/")))
+(dolist (source '(("melpa" . "https://melpa.org/packages/")
+		  ("melpa-stable" . "https://stable.melpa.org/packages/")))
   (add-to-list 'package-archives source t))
 
 ;; (add-to-list 'package-archives

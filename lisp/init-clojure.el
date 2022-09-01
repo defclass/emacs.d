@@ -1,10 +1,9 @@
 ;; Cider &  nREPL
-(package-install 'clj-mode)
+(package-install 'clojure-mode)
 (add-hook 'clojure-mode-hook 'turn-on-eldoc-mode)
 (add-hook 'cider-repl-mode-hook 'turn-on-eldoc-mode)
 
 ;; clj-refactor
-(require 'clj-mode)
 (defun clojure-refactor-hook ()
     (clj-refactor-mode 1)
     (yas-minor-mode 1) 
