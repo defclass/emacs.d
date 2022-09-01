@@ -2,24 +2,13 @@
 
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
-;; (add-to-list 'package-archives
-;; 	     '("melpa-stable" . "http://melpa-stable.milkbox.net/packages/"))
-
 (dolist (source '(("melpa" . "https://melpa.org/packages/")
 		  ("melpa-stable" . "https://stable.melpa.org/packages/")))
   (add-to-list 'package-archives source t))
 
-;; (add-to-list 'package-archives
-;;   '("melpa" . "http://melpa.milkbox.net/packages/"))
-
-;; (add-to-list 'package-archives
-;; 	     '("marmalade" . "http://marmalade-repo.org/packages/"))
-
-;; (add-to-list 'package-archives
-;;              '("melpa-stable" . "https://stable.melpa.org/packages/"))
-
 
 ;; Initialize all the ELPA packages (what is installed using the packages commands)
+
 (package-initialize)
 (require 'init-env)
 (require 'init-epla)
