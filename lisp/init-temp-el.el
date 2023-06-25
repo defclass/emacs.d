@@ -10,8 +10,8 @@
 
 (defun ensure-dir (dir)
   (progn
-    (unless (file-exists-p dir)
-      (make-directory dir))
+    (unless (file-directory-p dir)
+      (make-directory dir t))
     dir))
 
 (defun daily ()
@@ -56,16 +56,6 @@
 
 (defun -is-buffer-name-special (buffer-name)
   (string-match-p "^\\*.*\\*$" buffer-name))
-
-
-(defun confirm-kill-unsaved-buffer ()
-  (if (and (buffer-modified-p)
-           (not (buffer-file-name))
-	   (not (-is-buffer-name-special (buffer-name (current-buffer)))))
-      (yes-or-no-p (format "Buffer %s modified and unsaved. Kill anyway? " (buffer-name)))
-    t))
-
-(add-hook 'kill-buffer-query-functions 'confirm-kill-unsaved-buffer)
 
 (global-set-key (kbd "C-c n") 'create-tmp-file)
 (global-set-key (kbd "C-c s") 'org-insert-structure-template)
