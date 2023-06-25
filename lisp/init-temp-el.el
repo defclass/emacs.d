@@ -54,11 +54,14 @@
       (insert (format "#+title: Happy hacking with ♥\n#+author: Michael Wong\n#+date: %s\n\n* " time)))))
 
 
-(defun -is-buffer-name-special (buffer-name)
-  (string-match-p "^\\*.*\\*$" buffer-name))
+(setq org-pandoc-command "/usr/local/bin/pandoc")
+
+(require 'org-tempo)
+
 
 (global-set-key (kbd "C-c n") 'create-tmp-file)
 (global-set-key (kbd "C-c s") 'org-insert-structure-template)
+(global-set-key (kbd "C-c e") 'org-pandoc-export-as-markdown)
 
 
 (provide 'init-temp-el)
