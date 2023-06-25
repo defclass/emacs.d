@@ -1,6 +1,5 @@
-;;(setq mac-command-modifier 'meta)
-(global-linum-mode t)
 (setq column-number-mode t)
+(defalias 'yes-or-no-p 'y-or-n-p)
 
 
 (tool-bar-mode -1)
@@ -37,7 +36,7 @@
 
 ;; avy-mode
 (require-package 'avy)
-(global-set-key (kbd "C-;") 'avy-goto-char)
+;;(global-set-key (kbd "C-;") 'avy-goto-char)
 
 ;; smex
 (require-package 'smex)
@@ -67,7 +66,5 @@
 
 
 (use-package iedit :ensure t)
-
-
 
 (provide 'init-edit-utils)
