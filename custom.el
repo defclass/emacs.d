@@ -14,23 +14,3 @@
  ;; If there is more than one, they won't work right.
  )
 
-(defun daily-md ()
-  (interactive)
-  (let ((daily-name (format-time-string "%Y-%m-%d")))
-    (find-file (format "%s.md" daily-name))))
-
-(defun insert-current-date ()
-  (interactive)
-  (insert (shell-command-to-string "echo -n $(date +%Y-%m-%d)")))
-
-(defun insert-current-datetime ()
-  (interactive)
-  (insert (shell-command-to-string "echo -n $(date '+%Y-%m-%d %H:%m:%S')")))
-
-(defun note ()
-  (interactive)
-  (find-file  "~/note"))
-
-(defun codebase ()
-  (interactive)
-  (find-file  "~/bearychat/codebase/"))

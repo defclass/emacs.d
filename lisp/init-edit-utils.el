@@ -13,9 +13,12 @@
 (global-set-key (kbd "C-c j") 'join-line)
 
 ;; backup
-;; 不要 # 号开头的文件。
-(setq auto-save-default nil)
-;; 空闲 5 秒钟后自动保存
+(setq auto-save-default t)
+
+(setq auto-save-file-name-transforms
+      `((".*" ,(expand-file-name "~/.emacs.d/autosaves/") t)))
+
+;; 空闲 1 秒钟后自动保存
 (setq auto-save-timeout 1)
 ;; 启用直接保存自动保存内容到原始文件
 (setq auto-save-visited-file-name t)
@@ -47,16 +50,8 @@
 ;; (setq-default auto-fill-function 'do-auto-fill)
 ;; (setq-default fill-column 80)
 
-
-;;  by drawing a thin line
-;; (require-package 'fill-column-indicator)
-
-;; (define-globalized-minor-mode global-fci-mode
-;;   fci-mode (lambda () (fci-mode 1)))
-
-;; (global-fci-mode 1)
-;; (setq fci-rule-column 81) ;; should be 80, have some bug? 
-;; (setq fci-style 'shading)
+;; org
+(setq org-hide-leading-stars t)
 
 (require-package 'sr-speedbar)
 (setq speedbar-use-images nil)
@@ -69,6 +64,9 @@
 
 (require-package 'git-link)
 (global-set-key (kbd "C-c g l") 'git-link)
+
+
+(use-package iedit :ensure t)
 
 
 
