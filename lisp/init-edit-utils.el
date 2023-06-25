@@ -1,4 +1,4 @@
-(setq column-number-mode t)
+(setq linum-mode t)
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 

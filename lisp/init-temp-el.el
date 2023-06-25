@@ -16,9 +16,17 @@
 
 (defun daily ()
   (interactive)
-  (let ((daily-name (format-time-string "%Y-%m-%d"))
-	(note-dir (ensure-dir org-note-dir)))
-    (find-file (format "%s/%s.org" note-dir daily-name))))
+  (let* ((daily-name (format-time-string "%Y-%m-%d"))
+	 (note-dir (ensure-dir org-note-dir))
+	 (file-name (format "%s/%s.org" note-dir daily-name))
+	 (date (format-time-string date-format)))
+    (if (file-exists-p file-name)
+	(progn
+	  (find-file file-name)
+	  (goto-char (point-max)))
+      (progn
+	(find-file file-name)
+	(insert (format "#+title: Journal %s with ♥\n#+author: Michael Wong\n\n* " date date))))))
 
 (defun insert-current-date ()
   (interactive)
