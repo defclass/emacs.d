@@ -22,4 +22,5 @@
 (require 'init-go)
 (require 'init-nginx)
 (require 'init-ivy)
+(require 'init-lsp-mode)
 (require 'init-pyim)

@@ -1,4 +1,4 @@
-(setq mac-command-modifier 'meta)
+;;(setq mac-command-modifier 'meta)
 (global-linum-mode t)
 (setq column-number-mode t)
 
@@ -13,15 +13,19 @@
 (global-set-key (kbd "C-c j") 'join-line)
 
 ;; backup
-(setq backup-by-copying t      
-      backup-directory-alist 
-      '(("." . "~/.emacs.d/.saves"))    
-      delete-old-versions t
-      kept-new-versions 6
-      kept-old-versions 2
-      version-control t)       
+;; 不要 # 号开头的文件。
+(setq auto-save-default nil)
+;; 空闲 5 秒钟后自动保存
+(setq auto-save-timeout 1)
+;; 启用直接保存自动保存内容到原始文件
+(setq auto-save-visited-file-name t)
+;; 启用空闲时自动保存
+(run-with-idle-timer auto-save-timeout t #'auto-save-visited-mode)
 
-(setq auto-save-default nil) 
+
+;; 启用全局自动刷新模式
+(global-auto-revert-mode t)
+
 
 ;;ido
 (ido-mode 1)
