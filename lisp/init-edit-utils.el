@@ -17,7 +17,7 @@
 
 ;; backup
 ;; 设置备份文件目录
-(setq backup-directory-alist `((".*" . ,(expand-file-name "~/.emacs.d/auto-saves-list/"))))
+(setq backup-directory-alist `((".*" . ,(expand-file-name "~/.emacs.d/auto-saves/"))))
 
 
 ;; 空闲 1 秒钟后自动保存

@@ -2,7 +2,7 @@
 .emacs.desktop.lock
 .saves/
 ac-comphist.dat
-auto-save-list/
+auto-saves/
 elpa/
 ido.last
 network-security.data
@@ -19,3 +19,4 @@ image-dired
 projects
 custom.el
 org-persist
+
