@@ -3,6 +3,7 @@
 .saves/
 ac-comphist.dat
 auto-saves/
+auto-save-list/
 elpa/
 ido.last
 network-security.data
@@ -19,4 +20,3 @@ image-dired
 projects
 custom.el
 org-persist
-

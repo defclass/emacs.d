@@ -25,13 +25,18 @@
 
 (setq org-hide-leading-stars t)
 
-(setq org-agenda-files (directory-files-recursively org-note-dir "\\.org$"))
 
 (defun process-new-org-files ()
   (let ((files (directory-files-recursively org-note-dir "\\.org$")))
-    (cl-loop for file in files
-             unless (seq-contains-p org-agenda-files file)
-             do (add-to-list 'org-agenda-files file))))
+    (cl-loop for file in files do	     
+             (unless (or (seq-contains-p org-agenda-files file)
+			 (string-match-p "/\\.\\#.*" file))
+ 	       (add-to-list 'org-agenda-files file)))))
+
+;; init
+(setq-default org-agenda-files nil) ;; clear
+(process-new-org-files)
+
 
 ;; 自动监视新增的 org files。
 (run-with-timer 0 10 'process-new-org-files)
