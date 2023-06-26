@@ -1,6 +1,7 @@
 (defvar temp-config-file "~/.emacs.d/lisp/init-temp-el.el")
 (defvar org-note-dir "~/note/org-note")
-(defvar temp-dir "~/note/tmp")
+(defvar org-daily (format  "%s/daily" org-note-dir))
+(defvar temp-dir (format  "%s/tmp" org-note-dir))
 (defvar date-format "%Y-%m-%d")
 (defvar datetime-format "%Y-%m-%dT%H:%M:%S")
 
@@ -17,7 +18,7 @@
 (defun daily ()
   (interactive)
   (let* ((daily-name (format-time-string "%Y-%m-%d"))
-	 (note-dir (ensure-dir org-note-dir))
+	 (note-dir (ensure-dir org-daily))
 	 (file-name (format "%s/%s.org" note-dir daily-name))
 	 (date (format-time-string date-format)))
     (if (file-exists-p file-name)
@@ -37,11 +38,6 @@
   (insert (format-time-string datetime-format)))
 
 
-(defun note-dir ()
-  (interactive)
-  (let ((directory (ensure-dir org-note-dir)))
-    (find-file  directory)))
-
 (defun create-tmp-file ()
   (interactive)  
   (let* ((dir (ensure-dir temp-dir))
@@ -58,6 +54,17 @@
 
 (require 'org-tempo)
 
+;; org
+(setq org-agenda-files (directory-files-recursively org-note-dir "\\.org$"))
+
+(defun process-new-org-files ()
+  (let ((files (directory-files-recursively org-note-dir "\\.org$")))
+    (cl-loop for file in files
+             unless (seq-contains-p org-agenda-files file)
+             do (add-to-list 'org-agenda-files file))))
+
+;; 自动监视新增的 org files。
+(run-with-timer 0 10 'process-new-org-files)
 
 (global-set-key (kbd "C-c n") 'create-tmp-file)
 (global-set-key (kbd "C-c s") 'org-insert-structure-template)
@@ -67,3 +74,4 @@
 (set-face-attribute 'default nil :height 180)
 
 (provide 'init-temp-el)
+

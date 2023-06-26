@@ -29,14 +29,17 @@
 (global-auto-revert-mode t)
 
 
-;;ido
-(ido-mode 1)
+;;helm
+(require-package 'helm)
+
+(use-package helm
+  :ensure t
+  :config
+  (helm-mode 1)
+  (global-set-key (kbd "C-x b") 'helm-buffers-list))
 
 (desktop-save-mode 1)
 
-;; avy-mode
-(require-package 'avy)
-;;(global-set-key (kbd "C-;") 'avy-goto-char)
 
 ;; smex
 (require-package 'smex)
