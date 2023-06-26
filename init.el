@@ -24,4 +24,5 @@
 (require 'init-ivy)
 (require 'init-lsp-mode)
 (require 'init-pyim)
+(require 'init-org)
 (require 'init-temp-el)

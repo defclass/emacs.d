@@ -1,13 +1,12 @@
-(setq linum-mode t)
+(when (version<= "26.0.50" emacs-version )
+  (global-display-line-numbers-mode))
+
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 (menu-bar-mode -1)
-
-(setq make-backup-files nil)
-
 
 (global-set-key (kbd "C-c j") 'join-line)
 
@@ -52,16 +51,15 @@
 ;; (setq-default auto-fill-function 'do-auto-fill)
 ;; (setq-default fill-column 80)
 
-;; org
-(setq org-hide-leading-stars t)
-
 (require-package 'sr-speedbar)
 (setq speedbar-use-images nil)
 (setq dframe-update-speed t)
 (setq sr-speedbar-right-side nil)
 (setq speedbar-show-unknown-files t)
 (setq sr-speedbar-max-width 40)
+
 (global-set-key (kbd "C-c l") 'sr-speedbar-toggle)
+
 
 
 (require-package 'git-link)
