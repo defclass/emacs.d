@@ -2,6 +2,7 @@
 (defvar org-note-dir "~/note/org-note")
 (defvar org-daily (format  "%s/daily" org-note-dir))
 (defvar temp-dir (format  "%s/tmp" org-note-dir))
+(defvar page-dir (format  "%s/page" org-note-dir))
 (defvar date-format "%Y-%m-%d")
 (defvar datetime-format "%Y-%m-%dT%H:%M:%S")
 
@@ -28,6 +29,11 @@
       (progn
 	(find-file file-name)
 	(insert (format "#+title: Journal %s with ♥\n#+author: Michael Wong\n\n* " date date))))))
+
+(defun page ()
+  (interactive)
+  (let* ((dir (ensure-dir page-dir)))
+    (find-file dir)))
 
 (defun insert-current-date ()
   (interactive)
