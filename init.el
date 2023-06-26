@@ -12,6 +12,7 @@
 (package-initialize)
 (require 'init-env)
 (require 'init-epla)
+(require 'init-common)
 (require 'init-edit-utils)
 (require 'init-plantuml)
 (require 'init-markdown)

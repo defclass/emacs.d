@@ -10,13 +10,18 @@
 
 (global-set-key (kbd "C-c j") 'join-line)
 
-;; backup
-(setq auto-save-default t)
+;; 设置新文件的默认编码格式为 UTF-8
+(setq-default buffer-file-coding-system 'utf-8)
+(prefer-coding-system 'utf-8)
 
-(setq auto-save-file-name-transforms
-      `((".*" ,(expand-file-name "~/.emacs.d/autosaves/") t)))
+
+;; backup
+;; 设置备份文件目录
+(setq backup-directory-alist `((".*" . ,(expand-file-name "~/.emacs.d/auto-saves-list/"))))
+
 
 ;; 空闲 1 秒钟后自动保存
+(setq auto-save-default t)
 (setq auto-save-timeout 1)
 ;; 启用直接保存自动保存内容到原始文件
 (setq auto-save-visited-file-name t)
@@ -46,10 +51,8 @@
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 
-;; 80 column, default on
-(toggle-truncate-lines 1)
-;; (setq-default auto-fill-function 'do-auto-fill)
-;; (setq-default fill-column 80)
+;; 字体大小
+(set-face-attribute 'default nil :height 180)
 
 (require-package 'sr-speedbar)
 (setq speedbar-use-images nil)
