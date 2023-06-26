@@ -63,5 +63,7 @@
 (global-set-key (kbd "C-c s") 'org-insert-structure-template)
 (global-set-key (kbd "C-c e") 'org-pandoc-export-as-markdown)
 
+;; 字体大小
+(set-face-attribute 'default nil :height 180)
 
 (provide 'init-temp-el)

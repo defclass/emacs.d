@@ -18,3 +18,4 @@ image-dired
 .lsp*
 projects
 custom.el
+org-persist
