@@ -14,7 +14,7 @@
   "Generate an Org file with the given TITLE."
   (interactive "sEnter the title: ")
   (let* ((raw-file-name (replace-regexp-in-string "\\s-+" "-" title))
-	 (filename (format "%s/%s.org" page-dir raw-file-name))
+	 (filename (-> (format "%s/%s.org" page-dir raw-file-name) downcase))
          (date (format-time-string date-format)))
     (ensure-dir page-dir)
     (if (file-exists-p filename)
