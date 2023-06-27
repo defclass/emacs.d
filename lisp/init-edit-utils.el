@@ -77,8 +77,8 @@
   (interactive)
   (when buffer-file-name
     (let ((filename buffer-file-name))
-      (when (yes-or-no-p (format "Delete file %s? " filename))
-        (delete-file filename)
+      (when (yes-or-no-p (format "Move file %s to trash? " filename))
+        (move-file-to-trash filename)
         (kill-buffer)))))
 
 (require-package 'git-link)
