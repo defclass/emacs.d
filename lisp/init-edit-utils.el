@@ -70,7 +70,16 @@
 
 (global-set-key (kbd "C-c l") 'sr-speedbar-toggle)
 
+;; 当前 buffer 中删除当前文件
 
+(defun delete-current-file ()
+  "Delete the current file associated with the current buffer."
+  (interactive)
+  (when buffer-file-name
+    (let ((filename buffer-file-name))
+      (when (yes-or-no-p (format "Delete file %s? " filename))
+        (delete-file filename)
+        (kill-buffer)))))
 
 (require-package 'git-link)
 (global-set-key (kbd "C-c g l") 'git-link)

@@ -10,6 +10,24 @@
   (let* ((dir (ensure-dir page-dir)))
     (find-file dir)))
 
+(defun create-page (title)
+  "Generate an Org file with the given TITLE."
+  (interactive "sEnter the title: ")
+  (let* ((raw-file-name (replace-regexp-in-string "\\s-+" "-" title))
+	 (filename (format "%s/%s.org" page-dir raw-file-name))
+         (date (format-time-string date-format)))
+    (ensure-dir page-dir)
+    (if (file-exists-p filename)
+	(message "Page already exists: %s" filename)
+	(progn 
+	  (find-file filename)
+	  (insert "#+title: " title "\n")
+	  (insert "#+author: Michael Wong \n")
+	  (insert "#+date: " date "\n\n")
+	  (insert "* ")
+	  (save-buffer)
+	  (message "Org file created: %s" (buffer-file-name))))))
+
 (defun daily ()
   (interactive)
   (let* ((date (format-time-string date-format))
