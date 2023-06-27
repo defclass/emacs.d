@@ -28,6 +28,13 @@
 ;; 启用空闲时自动保存
 (run-with-idle-timer auto-save-timeout t #'auto-save-visited-mode)
 
+(defun save-all-buffers ()
+  "保存所有未保存的缓冲区"
+  (interactive)
+  (save-some-buffers t (lambda () (buffer-modified-p))))
+
+;; 当 Emacs 失去焦点时保存所有未保存的缓冲区
+(add-hook 'focus-out-hook 'save-all-buffers) 
 
 ;; 启用全局自动刷新模式
 (global-auto-revert-mode t)

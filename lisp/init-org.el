@@ -41,10 +41,6 @@
 ;; 自动监视新增的 org files。
 (run-with-timer 0 10 'process-new-org-files)
 
-(global-set-key (kbd "C-c n") 'create-tmp-file)
-(global-set-key (kbd "C-c s") 'org-insert-structure-template)
-(global-set-key (kbd "C-c e") 'org-pandoc-export-as-markdown)
-
 (defun create-tmp-file ()
   (interactive)  
   (let* ((dir (ensure-dir temp-dir))
@@ -57,5 +53,11 @@
       (insert (format "#+title: Happy hacking with ♥\n#+author: Michael Wong\n#+date: %s\n\n* " time)))))
 
 (setq org-pandoc-command "/usr/local/bin/pandoc")
+
+(global-set-key (kbd "C-c n") 'create-tmp-file)
+(global-set-key (kbd "C-c s") 'org-insert-structure-template)
+(global-set-key (kbd "C-c e") 'org-pandoc-export-as-markdown)
+(global-set-key (kbd "C-c a") 'org-agenda)
+
 
 (provide 'init-org)
