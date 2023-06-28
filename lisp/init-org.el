@@ -76,6 +76,7 @@
 (global-set-key (kbd "C-c s") 'org-insert-structure-template)
 (global-set-key (kbd "C-c e") 'org-pandoc-export-as-markdown)
 (global-set-key (kbd "C-c a") 'org-agenda)
+(global-set-key (kbd "s-<return>") 'org-insert-subheading)
 
 
 (provide 'init-org)
