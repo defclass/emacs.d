@@ -1,6 +1,7 @@
 (require 'package)
 
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
+(add-to-list 'load-path (expand-file-name "site-lisp" user-emacs-directory))
 
 (dolist (source '(("melpa" . "https://melpa.org/packages/")
 		  ("melpa-stable" . "https://stable.melpa.org/packages/")))
