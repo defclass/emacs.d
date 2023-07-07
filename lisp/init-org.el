@@ -83,6 +83,13 @@
 
 (setq org-list-demote-modify-bullet '(("+" . "-") ("-" . "+")))
 
+;; 换行
+(defun my-org-mode-setup ()
+  "Customize settings for Org Mode."
+  (setq-local word-wrap t))
+
+(add-hook 'org-mode-hook 'my-org-mode-setup)
+
 
 (global-set-key (kbd "C-c n") 'create-tmp-file)
 (global-set-key (kbd "C-c s") 'org-insert-structure-template)
