@@ -20,3 +20,4 @@ image-dired
 projects
 custom.el
 org-persist
+.DS_Store
