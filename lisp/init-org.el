@@ -72,6 +72,18 @@
 
 (setq org-pandoc-command "/usr/local/bin/pandoc")
 
+(defun org-insert-list-below ()
+  "Insert a list item below the current headline."
+  (interactive)
+  (end-of-line)
+  (newline)
+  (newline)
+  (org-indent-line)
+  (insert "  - "))
+
+(setq org-list-demote-modify-bullet '(("+" . "-") ("-" . "+")))
+
+
 (global-set-key (kbd "C-c n") 'create-tmp-file)
 (global-set-key (kbd "C-c s") 'org-insert-structure-template)
 (global-set-key (kbd "C-c e") 'org-pandoc-export-as-markdown)
