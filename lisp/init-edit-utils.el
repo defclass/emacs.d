@@ -84,6 +84,10 @@
 (require-package 'git-link)
 (global-set-key (kbd "C-c g l") 'git-link)
 
+;; 换行
+
+(set-default 'truncate-lines t)
+
 
 (use-package iedit :ensure t)
 
