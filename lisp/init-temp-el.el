@@ -12,6 +12,8 @@
   (interactive)
   (insert (format-time-string datetime-format)))
 
+;; 自动换行
+(global-visual-line-mode t)
 
 (provide 'init-temp-el)
 
