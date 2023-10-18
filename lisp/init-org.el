@@ -41,6 +41,27 @@
 	(find-file file-name)
 	(insert (format "#+title: Journal %s with ♥\n#+author: Michael Wong\n\n* " date date))))))
 
+(defun get-tomorrows-date ()
+  (let* ((tomorrow (time-add (current-time) (seconds-to-time 86400)))
+         (year (string-to-number (format-time-string "%Y" tomorrow)))
+         (month (string-to-number (format-time-string "%m" tomorrow)))
+         (day (string-to-number (format-time-string "%d" tomorrow))))
+    (format "%04d-%02d-%02d" year month day)))
+
+(defun tomorrow ()
+  (interactive)
+  (let* ((date (get-tomorrows-date))
+	 (note-dir (ensure-dir org-daily))
+	 (file-name (format "%s/%s.org" note-dir date)))
+    (if (file-exists-p file-name)
+	(progn
+	  (find-file file-name)
+	  (goto-char (point-max)))
+      (progn
+	(find-file file-name)
+	(insert (format "#+title: Journal %s with ♥\n#+author: Michael Wong\n\n* " date date))))))
+
+
 (setq org-hide-leading-stars t)
 
 
@@ -88,7 +109,7 @@
   "Customize settings for Org Mode."
   (setq-local word-wrap t))
 
-(add-hook 'org-mode-hook 'my-org-mode-setup)
+;;(add-hook 'org-mode-hook 'my-org-mode-setup)
 
 
 (global-set-key (kbd "C-c n") 'create-tmp-file)
