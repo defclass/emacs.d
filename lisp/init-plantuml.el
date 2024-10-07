@@ -1,7 +1,10 @@
 (package-install 'plantuml-mode)
 
+(setq plantuml-default-exec-mode 'jar)
+
 (setq plantuml-jar-path
-      "/usr/local/Cellar/plantuml/1.2018.7/libexec/plantuml.jar")
+      (expand-file-name "/opt/homebrew/Cellar/plantuml/1.2024.6/libexec/plantuml.jar"
+			"plantuml-1.2024.6.jar"))
 
 (add-hook 'plantuml-mode-hook
 	  (lambda ()

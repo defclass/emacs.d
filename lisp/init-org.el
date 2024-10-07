@@ -28,38 +28,65 @@
 	  (save-buffer)
 	  (message "Org file created: %s" (buffer-file-name))))))
 
-(defun daily ()
-  (interactive)
-  (let* ((date (format-time-string date-format))
-	 (note-dir (ensure-dir org-daily))
-	 (file-name (format "%s/%s.org" note-dir date)))
+(defun parse-date (date-str)
+  "Parse DATE-STR in the formats YYYY/MM/DD, YYYY-MM-DD, or YYYYMMDD."
+  (cond
+   ;; Match YYYY/MM/DD or YYYY-MM-DD
+   ((string-match "^\\([0-9]\\{4\\}\\)[/-]\\([0-9]\\{2\\}\\)[/-]\\([0-9]\\{2\\}\\)$" date-str)
+    (let ((year (match-string 1 date-str))
+          (month (match-string 2 date-str))
+          (day (match-string 3 date-str)))
+      (format "%s-%s-%s" year month day)))
+   
+   ;; Match YYYYMMDD
+   ((string-match "^\\([0-9]\\{4\\}\\)\\([0-9]\\{2\\}\\)\\([0-9]\\{2\\}\\)$" date-str)
+    (let ((year (match-string 1 date-str))
+          (month (match-string 2 date-str))
+          (day (match-string 3 date-str)))
+      (format "%s-%s-%s" year month day)))
+   
+   ;; Otherwise, return an error message
+   (t (error "Invalid date format. Please use YYYY/MM/DD, YYYY-MM-DD, or YYYYMMDD."))))
+
+
+(defun open-or-create-journal (date)
+  "Open or create a journal entry for the given DATE.
+   Inserts a title and author if the file doesn't exist."
+  (let* ((note-dir (ensure-dir org-daily))
+         (file-name (format "%s/%s.org" note-dir date)))
     (if (file-exists-p file-name)
-	(progn
-	  (find-file file-name)
-	  (goto-char (point-max)))
+        (progn
+          (find-file file-name)
+          (goto-char (point-max)))
       (progn
-	(find-file file-name)
-	(insert (format "#+title: Journal %s with ♥\n#+author: Michael Wong\n\n* " date date))))))
+        (find-file file-name)
+        (insert (format "#+title: Journal %s with ♥\n#+author: Michael Wong\n\n* " date date))))))
+
+(defun work-date ()
+  "Prompt for a date and open or create the journal entry for that date."
+  (interactive)
+  (let ((date-str (read-string "Enter date (YYYY/MM/DD, YYYY-MM-DD, or YYYYMMDD): ")))
+    (condition-case err
+        (let ((date (parse-date date-str)))
+          (open-or-create-journal date))
+      (error (message "Error: %s" (error-message-string err))))))
+
+(defun daily ()
+  "Open or create today's journal entry."
+  (interactive)
+  (let ((date (format-time-string date-format)))
+    (open-or-create-journal date)))
 
 (defun get-tomorrows-date ()
-  (let* ((tomorrow (time-add (current-time) (seconds-to-time 86400)))
-         (year (string-to-number (format-time-string "%Y" tomorrow)))
-         (month (string-to-number (format-time-string "%m" tomorrow)))
-         (day (string-to-number (format-time-string "%d" tomorrow))))
-    (format "%04d-%02d-%02d" year month day)))
+  "Get tomorrow's date as a string in the format YYYY-MM-DD."
+  (let* ((tomorrow (time-add (current-time) (seconds-to-time 86400))))
+    (format-time-string "%Y-%m-%d" tomorrow)))
 
 (defun tomorrow ()
+  "Open or create tomorrow's journal entry."
   (interactive)
-  (let* ((date (get-tomorrows-date))
-	 (note-dir (ensure-dir org-daily))
-	 (file-name (format "%s/%s.org" note-dir date)))
-    (if (file-exists-p file-name)
-	(progn
-	  (find-file file-name)
-	  (goto-char (point-max)))
-      (progn
-	(find-file file-name)
-	(insert (format "#+title: Journal %s with ♥\n#+author: Michael Wong\n\n* " date date))))))
+  (let ((date (get-tomorrows-date)))
+    (open-or-create-journal date)))
 
 
 (setq org-hide-leading-stars t)
